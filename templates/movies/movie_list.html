@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Home
+{% endblock page_title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% for movie in movies %}
+            {% if user in movie.users.all %}
+                <h4>
+                    <a href="">
+                        {{movie.kr_name}}
+                    </a>
+                </h4>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    
+    <h5>
+    {% if page_obj.has_previous %}
+        <a href="/?page={{page_obj.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+
+    {% for page in page_obj.paginator.page_range %}
+        <a href="/?page={{page}}">{{page}}</a>
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="/?page={{page_obj.next_page_number}}">Next</a>
+    {% endif %}
+
+    
+    </h5>
+    
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+    Search
+{% endblock page_title %}
+
+{% block search-bar %}
+
+{% endblock search-bar %}
+
+{% block content %}
+    <h2>
+        Search!
+    </h2>
+
+    <form method="get" action="{% url "movies:search" %}">
+        {{form.as_p}}
+        <button>Search</button>
+    </form>
+    <h3>Result Of {{kr_name}}</h3>
+
+    {% for movie in nv_result %}
+        <img src="{{movie.img_link}}" width="80" height="106" >
+        <h3>
+            <a href="">{{movie.movie_name}}</a>
+        </h3>
+        <h3>{{movie.cast}}</h3>
+    {% endfor %}
+    <!--
+    <h5>
+    {% if movies.has_previous %}
+        <a href="?{{address}}&page={{movies.previous_page_number}}">Previous</a>
+    {% endif %}
+
+
+    Page {{movies.number}} of {{movies.paginator.num_pages}}
+
+    {% for page in movies.paginator.page_range %}
+        <a href="?{{address}}&page={{page}}">{{page}}</a>
+    {% endfor %}
+
+    {% if movies.has_next %}
+        <a href="?{{address}}&page={{movies.next_page_number}}">Next</a>
+    {% endif %}
+
+    
+    </h5>
+    -->
+{% endblock  %}
