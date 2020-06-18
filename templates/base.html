@@ -10,7 +10,7 @@
         {% include "partials/nav.html" %}
         {% block search-bar %}
         <form method="get" action="{% url "movies:search" %}">
-            <input name="kr_name" placeholder="Search by City" />
+            <input name="movie" placeholder="Search by Movie Name" />
         </form>
         {% endblock search-bar %}
         

@@ -3,4 +3,5 @@ from . import models
 
 
 class SearchForm(forms.Form):
-    Movie = forms.CharField()
+    movie = forms.CharField()
+

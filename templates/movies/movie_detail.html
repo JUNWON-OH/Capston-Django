@@ -1,44 +1,35 @@
 {% extends "base.html" %}
 
 {% block page_title %}
-    {{room.name}}
+    {{detail.kr_name}}
 {% endblock page_title %}
 
 {% block content %}
-<div>
-    <h1>{{room.name}}</h1>
-    <h3>{{room.description}}</h3>
-</div>
-<div>
-    <h2>
-        By : {{room.host.username}}
-        {% if room.host.superhost %}
-            (superhost)
-        {% endif %}
-    </h2>
-    <h3>
-        Amenities
-        <ul>
-            {% for a in room.amenities.all %}
-                <li>{{a}}</li>
-            {% endfor %}
-        </ul>
-    </h3>
-    <h3>
-        Facilities
-        <ul>
-            {% for f in room.facilities.all %}
-                <li>{{f}}</li>
-            {% endfor %}
-        </ul>
-    </h3>
-    <h3>
-        House Rules
-        <ul>
-            {% for h in room.houserules.all %}
-                <li>{{h}}</li>
-            {% endfor %}
-        </ul>
-    </h3>
-</div>
+    <div class="detail">
+        <div class="detail_img">
+            <img src="{{detail.poster}}" width="320" height="424" >
+        </div>
+        <div class="detail_info">
+            <div>{{detail.kr_name}}</div>
+            <div>{{detail.en_name}}</div>
+            <div>개봉 : {{detail.year}}</div>
+            <div id="nv">
+                <span>네이버 평점 : {{detail.naver}}</span>
+                <a href="{{detail.link}}">GO</a>
+            </div>
+            <div>
+                <span>Rotten Tomato 지수 : {{rotten.rotten}}</span>
+                <a href="{{rotten.link}}">Go</a>
+            </div>
+            <div>
+                <span>IMDB 평점 : {{imdb.score}}</span>
+                <a href="{{imdb.link}}">Go</a>
+            </div>
+        </div>
+        <div class="detail_story">
+            <h4>줄거리</h4>
+            <div>{{detail.story_detail}}</div>
+        </div>
+    </div>
+    
 {% endblock  %}

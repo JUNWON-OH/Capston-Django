@@ -20,30 +20,13 @@
     <h3>Result Of {{kr_name}}</h3>
 
     {% for movie in nv_result %}
-        <img src="{{movie.img_link}}" width="80" height="106" >
-        <h3>
-            <a href="">{{movie.movie_name}}</a>
-        </h3>
-        <h3>{{movie.cast}}</h3>
+        <a href="{%  url  "movies:detail" movie.nv_code %}">
+            <img src="{{movie.img_link}}" width="80" height="106" >
+            <h3>
+                {{movie.movie_name}}
+            </h3>
+            <h3>{{movie.movie_infos}}</h3>
+        </a>
     {% endfor %}
-    <!--
-    <h5>
-    {% if movies.has_previous %}
-        <a href="?{{address}}&page={{movies.previous_page_number}}">Previous</a>
-    {% endif %}
-
-
-    Page {{movies.number}} of {{movies.paginator.num_pages}}
-
-    {% for page in movies.paginator.page_range %}
-        <a href="?{{address}}&page={{page}}">{{page}}</a>
-    {% endfor %}
-
-    {% if movies.has_next %}
-        <a href="?{{address}}&page={{movies.next_page_number}}">Next</a>
-    {% endif %}
-
     
-    </h5>
-    -->
 {% endblock  %}
