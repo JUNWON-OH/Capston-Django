@@ -1,25 +1,49 @@
 {% extends "base.html" %}
 
+{% block style %}
+    .user-list{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .infos {
+    width: 1000px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    }
+    .text-infos {
+        margin-left: 50px
+    }
+    .img{
+        border-radius: 10%
+    }
+{% endblock style %}
+
 {% block page_title %}
     Home
 {% endblock page_title %}
 
 {% block content %}
     {% if user.is_authenticated %}
+        <div class="user-list">
         {% for movie in movies %}
             {% if user in movie.users.all %}
                 <h4>
-                    <a href="{%  url  "movies:detail" movie.nv_code %}">
-                        <img src="{{movie.poster}}" width="80" height="106" >
-                        <h3>
-                            {{movie.kr_name}}
-                        </h3>
-                        <h3>감독 : {{movie.director}}</h3>
-                        <h3>배우 : {{movie.actor}}</h3>
+                    <a href="{%  url  "movies:detail" movie.nv_code %}" class="infos">
+                        <img src="{{movie.poster}}" width="80" height="106" class="img" >
+                        <div class="text-infos">
+                            <h3>
+                                {{movie.kr_name}}
+                            </h3>
+                            <h3>감독 : {{movie.director}}</h3>
+                            <h3>배우 : {{movie.actor}}</h3>
+                        </div>
                     </a>
                 </h4>
             {% endif %}
         {% endfor %}
+        </div>
     {% endif %}
     
     <h5>
