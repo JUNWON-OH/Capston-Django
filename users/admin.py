@@ -11,7 +11,16 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         (
             "Banana",
-            {"fields": ("avatar", "gender", "birthdate", "language", "currency",)},
+            {
+                "fields": (
+                    "avatar",
+                    "gender",
+                    "birthdate",
+                    "language",
+                    "currency",
+                    "login_method",
+                )
+            },
         ),
     )
 
@@ -28,4 +37,5 @@ class CustomUserAdmin(UserAdmin):
         "is_superuser",
         "email_verified",
         "email_secret",
+        "login_method",
     )

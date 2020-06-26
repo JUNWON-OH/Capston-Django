@@ -49,19 +49,16 @@ def detail(code):
     img_result = requests.get(img_link)
     img_soup = BeautifulSoup(img_result.text, "html.parser")
     poster = img_soup.find("img")["src"]
-    kr_name = (
+    movie_info = (
         soup.find("div", {"id": "container"})
         .find("div", {"id": "content"})
         .find("div", {"class": "mv_info_area"})
-        .find("h3", {"class": "h_movie"})
-        .get_text("", strip=True)
     )
-    english = (
-        soup.find("div", {"id": "content"})
-        .find("div", {"class": "mv_info_area"})
-        .find("strong", {"class": "h_movie2"})
-        .get_text("", strip=True)
-    )
+    people = movie_info.find("dl", {"class": "info_spec"}).find_all("dd")
+    director = people[1].get_text("", strip=True)
+    actor = people[2].get_text("", strip=True).replace("더보기", "")
+    kr_name = movie_info.find("h3", {"class": "h_movie"}).get_text("", strip=True)
+    english = movie_info.find("strong", {"class": "h_movie2"}).get_text("", strip=True)
     english_list = str(english).split(",")
     en_name = english_list[-2].rstrip().lstrip()
     year = english_list[-1].lstrip().rstrip()
@@ -84,6 +81,8 @@ def detail(code):
         .get_text("", strip=True)
     )
     movie_detail["link"] = link
+    movie_detail["director"] = director
+    movie_detail["actor"] = actor
     movie_detail["poster"] = poster
     movie_detail["kr_name"] = kr_name
     movie_detail["English"] = english

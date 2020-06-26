@@ -5,6 +5,12 @@
 {% if user.is_authenticated %}
     <li><a href="{% url "users:logout" %}">Log Out</a></li>
     <li>Welcome! {{user}}</li>
+    <form method="get" action="{% url "movies:search" %}">
+        <input name="movie" placeholder="Search by Movie Name" />
+    </form>
+    <span>
+        *검색에 필요한 소요시간은 대략 5~10초 입니다.*
+    </span>
 {% else %}
     <li><a href="{% url "users:login" %}">Log In</a></li>
     <li><a href="{% url "users:signup" %}">Sign Up</a></li>

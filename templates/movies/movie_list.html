@@ -9,8 +9,13 @@
         {% for movie in movies %}
             {% if user in movie.users.all %}
                 <h4>
-                    <a href="">
-                        {{movie.kr_name}}
+                    <a href="{%  url  "movies:detail" movie.nv_code %}">
+                        <img src="{{movie.poster}}" width="80" height="106" >
+                        <h3>
+                            {{movie.kr_name}}
+                        </h3>
+                        <h3>감독 : {{movie.director}}</h3>
+                        <h3>배우 : {{movie.actor}}</h3>
                     </a>
                 </h4>
             {% endif %}

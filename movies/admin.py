@@ -15,20 +15,31 @@ class MovieAdmin(admin.ModelAdmin):
                 "fields": (
                     "nv_code",
                     "poster",
+                    "director",
+                    "actor",
                     "kr_name",
                     "en_name",
                     "en_search",
                     "year",
                     "naver",
                     "rotten",
-                    "imbd",
+                    "imdb",
                     "users",
+                    "movie_detail",
                 )
             },
         ),
     )
 
-    list_display = ("kr_name", "year", "naver", "rotten", "imbd", "count_users")
+    list_display = (
+        "kr_name",
+        "year",
+        "actor",
+        "naver",
+        "rotten",
+        "imdb",
+        "count_users",
+    )
 
     list_filter = ("users",)
 

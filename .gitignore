@@ -145,3 +145,8 @@ Pipfile.lock
 .migrations/
 .uploads/
 uploads/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
